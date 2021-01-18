@@ -213,7 +213,7 @@ pub fn msg_cycles_accept(max_amount: i64) -> i64 {
     unsafe { ic0::msg_cycles_accept(max_amount) }
 }
 
-pub(crate) unsafe fn arg_data_raw() -> Vec<u8> {
+pub unsafe fn arg_data_raw() -> Vec<u8> {
     let len: usize = ic0::msg_arg_data_size() as usize;
     let mut bytes = vec![0u8; len as usize];
     ic0::msg_arg_data_copy(bytes.as_mut_ptr() as i32, 0, len as i32);
